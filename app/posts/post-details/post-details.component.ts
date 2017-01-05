@@ -35,4 +35,8 @@ export class PostDetailsComponent implements OnInit {
         header.description = this.post.description;
         this.pageHeaderService.setTitle(header);
     }
+    
+    goBack(): void {
+        this.location.back();
+    }
 }
