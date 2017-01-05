@@ -1,6 +1,6 @@
 <div id="fh5co-board" data-columns>
     <div>
-        <div class="thumbnail"  *ngFor="let post of posts" [routerLink]="['/post', post.id]" >
+        <div class="thumbnail"  *ngFor="let post of posts">
             <img [src]="post.imageUrl">
             <div class="caption">
                 <h4><a href="#">{{post.header}}</a></h4>
