@@ -23,6 +23,7 @@ export class PostsListComponent implements OnInit {
         let header = new PageHeader();
         header.title = "Kresh";
         header.description = "בלוג לחובבי נגרות ועשיה";
+        header.backgroundImage = "app/images/home-bg.jpg";
         this.pageHeaderService.setTitle(header);
         this.postService.getRecentPosts().subscribe(
                      posts => this.posts = posts,
