@@ -18,6 +18,7 @@ export class AboutComponent implements OnInit{
         let header = new PageHeader();
         header.title = "סיפור קצר";
         header.description = "על מה ועל למה";
+        header.backgroundImage = "app/images/about-bg.jpg";
         this.pageHeaderService.setTitle(header);
     }
 }
