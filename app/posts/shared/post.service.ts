@@ -13,6 +13,12 @@ export class PostService{
 
     constructor(private http: Http) { }
 
+    getPost(id: number) : Observable<Post>{
+        return this.http.get(this.postsUrl + `/?id=${id}`)
+                .map(this.extractData)
+                .catch(this.handleError);
+    }
+
     getPosts(category:string) : Observable<Post[]>{
         return this.http.get(this.postsUrl + `/?category=${category}`)
                 .map(this.extractData)
