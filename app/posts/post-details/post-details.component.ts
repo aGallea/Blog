@@ -11,7 +11,7 @@ import { PostService } from '../shared/post.service'
 @Component({
     moduleId: module.id,
     selector:'post-details',
-    templateUrl: `{{post.content}}`
+    template: `{{post.content}}`
 })
 
 export class PostDetailsComponent implements OnInit {
