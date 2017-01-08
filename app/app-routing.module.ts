@@ -9,6 +9,8 @@ import { PostDetailsComponent }    from './posts/post-details/post-details.compo
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home',  component: PostsListComponent },
+  { path: 'tools',  component: PostsListComponent },
+  { path: 'projects',  component: PostsListComponent },
   { path: 'about',  component: AboutComponent },
   { path: 'postdetails/:id', component: PostDetailsComponent },
   { path: 'contact',  component: ContactComponent }
