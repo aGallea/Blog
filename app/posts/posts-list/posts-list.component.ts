@@ -26,7 +26,7 @@ export class PostsListComponent implements OnInit {
         header.description = "בלוג לחובבי נגרות ועשיה";
         header.backgroundImage = "app/images/home-bg.jpg";
         this.pageHeaderService.setTitle(header);
-        this.postService.getRecentPosts().subscribe(
+        this.postService.getPosts("").subscribe(
                      posts => this.posts = posts,
                      error =>  this.errorMessage = <any>error);;
     }
