@@ -16,6 +16,7 @@ import { MasterPageComponent } from './master-page/master-page.component';
 import { PostsListComponent }    from './posts/posts-list/posts-list.component';
 import { AboutComponent } from './about/about.component';
 import { PostService } from './posts/shared/post.service';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
    imports: [
@@ -29,7 +30,8 @@ import { PostService } from './posts/shared/post.service';
     AppComponent,
     MasterPageComponent,
     PostsListComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
   ],
   providers:    [ PostService ],
   bootstrap:    [ AppComponent ]
