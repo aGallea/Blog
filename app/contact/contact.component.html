@@ -1,1 +1,55 @@
-<p></p>
+<p>יש לכם שאלות? בא לכם להתייעץ? לשאול מחירים? להעלות פוסט אורח? הכניסו פרטים ואני אחזור אליכם בהקדם, בכל נושא שנראה לכם.</p>
+<div  [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+    <div class="form-group">
+      <input type="text" class="form-control" id="name"
+             required
+             [(ngModel)]="model.name" name="name"
+             #name="ngModel" placeholder="שם">
+      <div [hidden]="name.valid || name.pristine"
+           class="alert alert-danger">
+        שם הוא שדה חובה
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <input type="email" class="form-control" id="email"
+             required
+             [(ngModel)]="model.email" name="email"
+             #email="ngModel" placeholder="כתובת אימייל">
+      <div [hidden]="email.valid || email.pristine"
+           class="alert alert-danger">
+        כתובת אימייל אינה תקינה
+      </div>
+    </div>
+
+    <div class="form-group">
+      <textarea rows="10" class="form-control" id="message"
+             required
+             [(ngModel)]="model.message" name="message"
+             #message="ngModel"  placeholder="הודעה"></textarea>
+      <div [hidden]="message.valid || message.pristine"
+           class="alert alert-danger">
+        תוכן ההודעה הוא שדה חובה
+      </div>
+    </div>
+    <button type="submit" class="btn btn-default" [disabled]="!contactForm.form.valid">שלח</button>
+    
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h2>תודה רבה. הפרטים הבאים נשלחו ואחזור אליך בהקדם:</h2>
+  <div class="row">
+    <div class="col-xs-3">שם</div>
+    <div class="col-xs-9  pull-right">{{ model.name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">כתובת אימייל</div>
+    <div class="col-xs-9 pull-right">{{ model.email }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">הודעה</div>
+    <div class="col-xs-9 pull-right">{{ model.message }}</div>
+  </div>
+</div>
