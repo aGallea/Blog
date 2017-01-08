@@ -20,13 +20,17 @@ export class PostService{
     }
 
     getPosts(category:string) : Observable<Post[]>{
+        if (category === "") {
+           return this.http.get(this.postsUrl)
+                    .map(this.extractData)
+                    .catch(this.handleError); 
+        }
+        if (category === "recent") {
+           return this.http.get(this.postsUrl + `/?page=1/?count=10`)
+                    .map(this.extractData)
+                    .catch(this.handleError); 
+        }
         return this.http.get(this.postsUrl + `/?category=${category}`)
-                .map(this.extractData)
-                .catch(this.handleError);
-    }
-
-    getRecentPosts() : Observable<Post[]>{
-        return this.http.get(this.postsUrl)
                 .map(this.extractData)
                 .catch(this.handleError);
     }
