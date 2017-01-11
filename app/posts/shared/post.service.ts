@@ -14,7 +14,7 @@ export class PostService{
     constructor(private http: Http) { }
 
     getPost(id: number) : Observable<Post>{
-        return this.http.get(this.postsUrl + `/?id=${id}`)
+        return this.http.get(`${this.postsUrl}/${id}`)
                 .map(this.extractData)
                 .catch(this.handleError);
     }

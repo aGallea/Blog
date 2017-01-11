@@ -7,9 +7,9 @@ import { PostService } from '../shared/post.service'
 
 @Component({
     moduleId: module.id,
-    selector:'posts-list',
+    selector:'tools-posts-list',
     templateUrl: 'posts-list.component.html',
-    styleUrls: ['posts-list.component.cs']
+    styleUrls: ['posts-list.component.css']
 })
 
 export class ToolsPostsListComponent implements OnInit {

@@ -1,5 +1,7 @@
 import { Component }      from '@angular/core';
 
+import { Contact }        from './contact.model';
+
 @Component({
   moduleId: module.id,
   selector: 'kresh-contact',

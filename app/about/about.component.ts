@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 
 import { PageHeaderService } from '../page-header/page-header.service';
 import { PageHeader }   from '../page-header/page-header.model';
+import { Post } from '../posts/shared/post.model';
+import { PostService } from '../posts/shared/post.service';
+import { CommentsListComponent } from '../comments/comments-list/comments-list.component';
 
 @Component({
     moduleId: module.id,
@@ -10,15 +13,29 @@ import { PageHeader }   from '../page-header/page-header.model';
 })
 
 export class AboutComponent implements OnInit{
-    constructor(private pageHeaderService: PageHeaderService) {
+    post:Post;
+    errorMessage:string;
+    @ViewChild(CommentsListComponent)
+    private commentsListComponent: CommentsListComponent;
+
+    constructor(private pageHeaderService: PageHeaderService, private postService:PostService) {
        
     }
 
     ngOnInit(): void{
+        this.postService.getPost(1).subscribe(
+                     post => this.loadPost(post),
+                     error =>  this.errorMessage = <any>error);
+        console.error(this.errorMessage);
+    }
+
+    loadPost(post:Post): void{
+        this.post=post;
         let header = new PageHeader();
-        header.title = "סיפור קצר";
-        header.description = "על מה ועל למה";
-        header.backgroundImage = "app/images/about-bg.jpg";
+        header.title = post.header;
+        header.description = post.description;
+        header.backgroundImage = post.imageUrl;
         this.pageHeaderService.setTitle(header);
+        this.commentsListComponent.loadComments(post.id);
     }
 }

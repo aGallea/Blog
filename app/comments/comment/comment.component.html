@@ -1,0 +1,23 @@
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 rtlDir">
+    <div class="row">
+        <h2 class="comment-form-header">השאר תגובה</h2>
+    </div>
+    <div class="row">
+        <form (ngSubmit)="onSubmit()" #commentForm="ngForm">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel" placeholder="שם">
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    שם הוא שדה חובה
+                </div>          
+            </div>
+            <div class="form-group">
+                <textarea rows="10" class="form-control" id="message" required [(ngModel)]="model.message" name="message" #message="ngModel" placeholder="הודעה"></textarea>
+                <div [hidden]="message.valid || message.pristine" class="alert alert-danger">
+                    נא לרשום את תוכן ההודעה
+                </div>          
+            </div>
+            <button type="submit" class="btn btn-default" [disabled]="!commentForm.for.valid">שלח</button>
+        </form>
+    </div>
+</div>
+	   

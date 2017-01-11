@@ -9,14 +9,15 @@ import { PostService } from '../shared/post.service'
     moduleId: module.id,
     selector:'posts-list',
     templateUrl: 'posts-list.component.html',
-    styleUrls: ['posts-list.component.cs']
+    styleUrls: ['posts-list.component.css']
 })
 
 export class PostsListComponent implements OnInit {
     posts:Post[];
     errorMessage:string;
     
-    constructor(private pageHeaderService: PageHeaderService, private postService:PostService) {
+    constructor(private pageHeaderService: PageHeaderService, 
+                private postService:PostService) {
        
     }
 
@@ -28,6 +29,6 @@ export class PostsListComponent implements OnInit {
         this.pageHeaderService.setTitle(header);
         this.postService.getPosts("").subscribe(
                      posts => this.posts = posts,
-                     error =>  this.errorMessage = <any>error);;
+                     error =>  this.errorMessage = <any>error);
     }
 }

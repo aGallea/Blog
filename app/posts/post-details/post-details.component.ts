@@ -11,7 +11,7 @@ import { PostService } from '../shared/post.service'
 @Component({
     moduleId: module.id,
     selector:'post-details',
-    template: `{{post.content}}`
+    templateUrl: 'post-details.component.html'
 })
 
 export class PostDetailsComponent implements OnInit {
@@ -31,7 +31,7 @@ export class PostDetailsComponent implements OnInit {
           .subscribe(post => this.post = post);
       
         let header = new PageHeader();
-        header.title = this.post.title;
+        header.title = this.post.header;
         header.description = this.post.description;
         this.pageHeaderService.setTitle(header);
     }

@@ -1,0 +1,31 @@
+<div class="row">
+    <div *ngIf="comments && comments.length > 0" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 rtlDir comments">
+		<div class="row">
+			<h2>תגובות</h2>
+		</div>
+		<div class="row">
+		    <div *ngFor="let comment of comments" class="comment">
+				<div class="comment-avatar">
+					<img src="app/images/default-avatar.png">
+				</div>
+				<div class="comment-text">
+					<p class="name">{{comment.name}}</p>
+					<p class="date">{{comment.date}}</p>
+					<p>{{comment.content}}</p>				
+					<a><i class="fa fa-share"></i>הגב</a>
+				</div>
+				<div *ngFor="let subComment of comment.comments" class="comment comment-child">
+    				<div class="comment-avatar">
+    					<img src="app/images/default-avatar.png">
+    				</div>
+    				<div class="comment-text">
+    					<p class="name">{{subComment.name}}</p>
+    					<p class="date">{{subComment.date}}</p>
+    					<p>{{subComment.content}}</p>				
+    					<a><i class="fa fa-share"></i>הגב</a>
+    				</div>
+    			</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -17,8 +17,12 @@ import { PostsListComponent }    from './posts/posts-list/posts-list.component';
 import { AboutComponent } from './about/about.component';
 import { PostService } from './posts/shared/post.service';
 import { ContactComponent } from './contact/contact.component';
-import { ProjectsPostsListComponent }    from './posts/projects-posts-list/projects-posts-list.component';
-import { ToolsPostsListComponent }    from './posts/tools-posts-list/tolls-posts-list.component';
+import { ProjectsPostsListComponent }    from './posts/posts-list/projects-posts-list.component';
+import { ToolsPostsListComponent }    from './posts/posts-list/tools-posts-list.component';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
+import { CommentsListComponent} from './comments/comments-list/comments-list.component';
+import { CommentComponent} from './comments/comment/comment.component';
+import { CommentService} from './comments/shared/comment.service';
 
 @NgModule({
    imports: [
@@ -35,9 +39,12 @@ import { ToolsPostsListComponent }    from './posts/tools-posts-list/tolls-posts
     AboutComponent,
     ContactComponent,
     ProjectsPostsListComponent,
-    ToolsPostsListComponent
+    ToolsPostsListComponent,
+    PostDetailsComponent,
+    CommentsListComponent,
+    CommentComponent
   ],
-  providers:    [ PostService ],
+  providers:    [ PostService,CommentService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

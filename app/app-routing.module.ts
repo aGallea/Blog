@@ -2,8 +2,8 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PostsListComponent }    from './posts/posts-list/posts-list.component';
-import { ProjectsPostsListComponent }    from './posts/projects-posts-list/projects-posts-list.component';
-import { ToolsPostsListComponent }    from './posts/tools-posts-list/tolls-posts-list.component';
+import { ProjectsPostsListComponent }    from './posts/posts-list/projects-posts-list.component';
+import { ToolsPostsListComponent }    from './posts/posts-list/tools-posts-list.component';
 import { AboutComponent }    from './about/about.component';
 import { ContactComponent }    from './contact/contact.component';
 import { PostDetailsComponent }    from './posts/post-details/post-details.component';
