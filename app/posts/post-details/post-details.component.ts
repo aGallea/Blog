@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
@@ -7,6 +7,7 @@ import { PageHeaderService } from '../../page-header/page-header.service';
 import { PageHeader }   from '../../page-header/page-header.model';
 import { Post } from '../shared/post.model';
 import { PostService } from '../shared/post.service'
+import { CommentsListComponent } from '../../comments/comments-list/comments-list.component';
 
 @Component({
     moduleId: module.id,
@@ -17,6 +18,8 @@ import { PostService } from '../shared/post.service'
 export class PostDetailsComponent implements OnInit {
     post:Post;
     errorMessage:string;
+    @ViewChild(CommentsListComponent)
+    private commentsListComponent: CommentsListComponent;
     
     constructor(
         private pageHeaderService: PageHeaderService, 
@@ -28,12 +31,17 @@ export class PostDetailsComponent implements OnInit {
     ngOnInit(): void{
         this.route.params
           .switchMap((params: Params) => this.postService.getPost(+params['id']))
-          .subscribe(post => this.post = post);
-      
+          .subscribe(post => loadPost(post));
+    }
+
+    loadPost(post:Post): void{
+        this.post=post;
         let header = new PageHeader();
-        header.title = this.post.header;
-        header.description = this.post.description;
+        header.title = post.header;
+        header.description = post.description;
+        header.backgroundImage = post.imageUrl;
         this.pageHeaderService.setTitle(header);
+        this.commentsListComponent.loadComments(post.id);
     }
     
     goBack(): void {
