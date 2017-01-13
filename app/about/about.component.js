@@ -21,7 +21,6 @@ var AboutComponent = (function () {
     AboutComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.postService.getPost(1).subscribe(function (post) { return _this.loadPost(post); }, function (error) { return _this.errorMessage = error; });
-        console.error(this.errorMessage);
     };
     AboutComponent.prototype.loadPost = function (post) {
         this.post = post;

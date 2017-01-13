@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Comment }        from '../shared/comment.model';
 import { CommentService }        from '../shared/comment.service';
@@ -6,24 +6,35 @@ import { CommentService }        from '../shared/comment.service';
 @Component({
   moduleId: module.id,
   selector: 'form-comment',
-  templateUrl: 'comment.component.html'
+  templateUrl: 'comment.component.html',
+  styleUrls: [ 'comment.component.css' ]
 })
 
 export class CommentComponent implements OnInit {
-  comment: Comment;
+  model = new Comment("","");
+  
   errorMessage :string;
+  @Input() postId: number;
 
-  constructor(private commentService: CommentService) { }
+  constructor(private commentService: CommentService) { 
+    this.model.comments=[];
+  }
 
   ngOnInit(): void {
     
   }
   
   onSubmit(): void {
-    if (!this.comment) { return; }
-    this.commentService.addComment(this.comment)
+    if (this.model.owner === "" || this.model.content==="") { return; }
+    this.model.postId = this.postId;
+    this.commentService.addComment(this.model)
                      .subscribe(
-                       comment  => this.comment=comment,
+                       comment  => this.addCommentSucceeded(comment),
                        error =>  this.errorMessage = <any>error);
+  }
+
+  addCommentSucceeded(comment:Comment): void{
+    this.model.owner="";
+    this.model.content="";
   }
 }

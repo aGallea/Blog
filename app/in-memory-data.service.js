@@ -14,18 +14,18 @@ var InMemoryDataService = (function () {
                     "<p>הבלוג הזה הוא בלוג של נגר חובב (חשוב לי לציין), אני לא משתמש בכלים כבדים (חוץ ממסור), אין לי שולחן נגרים (שולחן עבודה פשוט שאני בניתי), אני עובד בחצר של הבית, עד היום עבדתי רק עם אורן מוקצע (וכנראה זה גם ימשיך כך), הרבה פעמים אני מאלתר ואני עושה מלא (אבל מלא) טעויות .</p>" +
                     "<p>תודה שבחרתם לבקר כאן ואשמח לתגובות.</p>" +
                     "<p>גד</p><hr>",
-                ownerId: 1, imageUrl: 'app/images/about-bg.jpg', categoty: 'about'
+                ownerId: 1, imageUrl: 'app/images/about-bg.jpg', category: 'about'
             },
-            { id: 11, header: '11כותרת', description: 'פוסט נחמד 11', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'projects' },
-            { id: 12, header: 'כותרת12', description: 'פוסט נחמד 12', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'projects' },
-            { id: 13, header: '13כותרת', description: 'פוסט נחמד 13', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'projects' },
-            { id: 14, header: '14כותרת', description: 'פוסט נחמד 14', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'tools' },
-            { id: 15, header: '15כותרת', description: 'פוסט נחמד 15', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'projects' },
-            { id: 16, header: '16כותרת', description: 'פוסט נחמד 16', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'tools' },
-            { id: 17, header: '17כותרת', description: 'פוסט נחמד 17', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'projects' },
-            { id: 18, header: '18כותרת', description: 'פוסט נחמד 18', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'tools' },
-            { id: 19, header: '19כותרת', description: 'פוסט נחמד 19', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'tools' },
-            { id: 20, header: '20כותרת', description: 'פוסט נחמד 20', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', categoty: 'projects' }
+            { id: 11, header: '11כותרת', description: 'פוסט נחמד 11', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'projects' },
+            { id: 12, header: 'כותרת12', description: 'פוסט נחמד 12', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'projects' },
+            { id: 13, header: '13כותרת', description: 'פוסט נחמד 13', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'projects' },
+            { id: 14, header: '14כותרת', description: 'פוסט נחמד 14', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'tools' },
+            { id: 15, header: '15כותרת', description: 'פוסט נחמד 15', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'projects' },
+            { id: 16, header: '16כותרת', description: 'פוסט נחמד 16', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'tools' },
+            { id: 17, header: '17כותרת', description: 'פוסט נחמד 17', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'projects' },
+            { id: 18, header: '18כותרת', description: 'פוסט נחמד 18', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'tools' },
+            { id: 19, header: '19כותרת', description: 'פוסט נחמד 19', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'tools' },
+            { id: 20, header: '20כותרת', description: 'פוסט נחמד 20', content: '', ownerId: 1, imageUrl: 'app/images/1.jpg', category: 'projects' }
         ];
         var comments = [
             { id: 1, postId: 1, owner: 'gad1', dateSubmitted: '123', content: 'content1' },

@@ -10,18 +10,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var contact_model_1 = require('./contact.model');
+var page_header_service_1 = require('../page-header/page-header.service');
+var page_header_model_1 = require('../page-header/page-header.model');
 var ContactComponent = (function () {
-    function ContactComponent() {
+    function ContactComponent(pageHeaderService) {
+        this.pageHeaderService = pageHeaderService;
         this.submitted = false;
         this.model = new contact_model_1.Contact();
     }
+    ContactComponent.prototype.ngOnInit = function () {
+        var header = new page_header_model_1.PageHeader();
+        header.title = "צרו קשר";
+        header.description = "כל מה שעולה לכם בראש";
+        header.backgroundImage = "app/images/contact-bg.jpg";
+        this.pageHeaderService.setTitle(header);
+    };
     ContactComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'kresh-contact',
-            templateUrl: 'contact.component.html'
+            templateUrl: 'contact.component.html',
+            styleUrls: ['contact.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [page_header_service_1.PageHeaderService])
     ], ContactComponent);
     return ContactComponent;
 }());

@@ -26,7 +26,6 @@ export class AboutComponent implements OnInit{
         this.postService.getPost(1).subscribe(
                      post => this.loadPost(post),
                      error =>  this.errorMessage = <any>error);
-        console.error(this.errorMessage);
     }
 
     loadPost(post:Post): void{

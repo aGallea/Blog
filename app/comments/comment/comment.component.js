@@ -9,26 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var comment_model_1 = require('../shared/comment.model');
 var comment_service_1 = require('../shared/comment.service');
 var CommentComponent = (function () {
     function CommentComponent(commentService) {
         this.commentService = commentService;
+        this.model = new comment_model_1.Comment("", "");
+        this.model.comments = [];
     }
     CommentComponent.prototype.ngOnInit = function () {
     };
     CommentComponent.prototype.onSubmit = function () {
         var _this = this;
-        if (!this.comment) {
+        if (this.model.owner === "" || this.model.content === "") {
             return;
         }
-        this.commentService.addComment(this.comment)
-            .subscribe(function (comment) { return _this.comment = comment; }, function (error) { return _this.errorMessage = error; });
+        this.model.postId = this.postId;
+        this.commentService.addComment(this.model)
+            .subscribe(function (comment) { return _this.addCommentSucceeded(comment); }, function (error) { return _this.errorMessage = error; });
     };
+    CommentComponent.prototype.addCommentSucceeded = function (comment) {
+        this.model.owner = "";
+        this.model.content = "";
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], CommentComponent.prototype, "postId", void 0);
     CommentComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'form-comment',
-            templateUrl: 'comment.component.html'
+            templateUrl: 'comment.component.html',
+            styleUrls: ['comment.component.css']
         }), 
         __metadata('design:paramtypes', [comment_service_1.CommentService])
     ], CommentComponent);

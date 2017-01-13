@@ -15,6 +15,7 @@ var common_1 = require('@angular/common');
 var page_header_service_1 = require('../../page-header/page-header.service');
 var page_header_model_1 = require('../../page-header/page-header.model');
 var post_service_1 = require('../shared/post.service');
+var comments_list_component_1 = require('../../comments/comments-list/comments-list.component');
 var PostDetailsComponent = (function () {
     function PostDetailsComponent(pageHeaderService, postService, route, location) {
         this.pageHeaderService = pageHeaderService;
@@ -26,15 +27,24 @@ var PostDetailsComponent = (function () {
         var _this = this;
         this.route.params
             .switchMap(function (params) { return _this.postService.getPost(+params['id']); })
-            .subscribe(function (post) { return _this.post = post; });
+            .subscribe(function (post) { return _this.loadPost(post); });
+    };
+    PostDetailsComponent.prototype.loadPost = function (post) {
+        this.post = post;
         var header = new page_header_model_1.PageHeader();
-        header.title = this.post.header;
-        header.description = this.post.description;
+        header.title = post.header;
+        header.description = post.description;
+        header.backgroundImage = post.imageUrl;
         this.pageHeaderService.setTitle(header);
+        this.commentsListComponent.loadComments(post.id);
     };
     PostDetailsComponent.prototype.goBack = function () {
         this.location.back();
     };
+    __decorate([
+        core_1.ViewChild(comments_list_component_1.CommentsListComponent), 
+        __metadata('design:type', comments_list_component_1.CommentsListComponent)
+    ], PostDetailsComponent.prototype, "commentsListComponent", void 0);
     PostDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

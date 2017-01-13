@@ -31,7 +31,7 @@ export class PostDetailsComponent implements OnInit {
     ngOnInit(): void{
         this.route.params
           .switchMap((params: Params) => this.postService.getPost(+params['id']))
-          .subscribe(post => loadPost(post));
+          .subscribe(post => this.loadPost(post));
     }
 
     loadPost(post:Post): void{

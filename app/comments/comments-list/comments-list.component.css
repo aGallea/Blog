@@ -1,5 +1,4 @@
 .comments{
-	margin-top:50px;
     margin-bottom:50px;
 }
 
@@ -10,7 +9,7 @@
 }
 
 .comment{
-	margin-top: 0.8em;
+	margin-top: 0.9em;
 }
 
 .comment p{
@@ -29,7 +28,6 @@
     line-height: 1.8em;
     padding-top: 2px;
     font-family: 'Open Sans', sans-serif;
-    -webkit-transition: 0.5s all;
     font-weight: 400;
 	text-decoration:none;
 	cursor: pointer;
@@ -54,21 +52,17 @@
 .comment-text {
     float: right;
     width: 88.33333%;
+    margin-bottom: 5px;
 }
 
 .comment p.name{
-	font: 20px/20px 'Open Sans', sans-serif;
+	font: 15px/20px 'Open Sans', sans-serif;
     color: #363636;
 }
 
 .comment p.date{
-	font: 17px/20px 'Open Sans', sans-serif;
+	font: 14px/20px 'Open Sans', sans-serif;
     color: #363636;
-	padding-top: 10px;
-}
-
-.comment-form-header {
-	margin-top:100px;
 }
 
 .comment-child{

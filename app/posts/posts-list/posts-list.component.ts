@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PageHeaderService } from '../../page-header/page-header.service';
 import { PageHeader }   from '../../page-header/page-header.model';
@@ -17,7 +18,8 @@ export class PostsListComponent implements OnInit {
     errorMessage:string;
     
     constructor(private pageHeaderService: PageHeaderService, 
-                private postService:PostService) {
+                private postService:PostService,
+                private router: Router) {
        
     }
 
@@ -30,5 +32,9 @@ export class PostsListComponent implements OnInit {
         this.postService.getPosts("").subscribe(
                      posts => this.posts = posts,
                      error =>  this.errorMessage = <any>error);
+    }
+
+    onSelect(postId: number) {
+        this.router.navigate(['/postdetails', postId]);
     }
 }

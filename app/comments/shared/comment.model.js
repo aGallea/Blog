@@ -1,14 +1,8 @@
 "use strict";
 var Comment = (function () {
-    function Comment(postId, id, owner, dateSubmitted, content, comments) {
-        this.postId = postId;
-        this.id = id;
+    function Comment(owner, content) {
         this.owner = owner;
-        this.dateSubmitted = dateSubmitted;
         this.content = content;
-        if (comments) {
-            this.comments = comments;
-        }
     }
     return Comment;
 }());
