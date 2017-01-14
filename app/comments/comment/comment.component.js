@@ -25,10 +25,12 @@ var CommentComponent = (function () {
             return;
         }
         this.model.postId = this.postId;
+        this.model.parentId = 0;
         this.commentService.addComment(this.model)
             .subscribe(function (comment) { return _this.addCommentSucceeded(comment); }, function (error) { return _this.errorMessage = error; });
     };
     CommentComponent.prototype.addCommentSucceeded = function (comment) {
+        this.commentService.commentAdded(comment);
         this.model.owner = "";
         this.model.content = "";
     };

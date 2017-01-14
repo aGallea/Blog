@@ -1,6 +1,7 @@
 node_modules
 .vscode
 brace-expansion
+out
 
 app/*.js
 app/*.js.map

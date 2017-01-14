@@ -1,6 +1,7 @@
 import { Injectable }     from '@angular/core';
 import { Headers,Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { Subject }    from 'rxjs/Subject';
 
 import { Comment } from './comment.model';
 
@@ -9,6 +10,8 @@ export class CommentService{
     private headers = new Headers({'Content-Type': 'application/json'});
     private options = new RequestOptions({ headers: this.headers });
     private commentsUrl = 'api/comments';  
+    private commentSubjectSource = new Subject<Comment>();
+    commentSubject$ = this.commentSubjectSource.asObservable();
     
     constructor(private http: Http) { }
     
@@ -41,5 +44,9 @@ export class CommentService{
         }
         console.error(errMsg);
         return Observable.throw(errMsg);
+    }
+
+    commentAdded(comment:Comment) {
+        this.commentSubjectSource.next(comment);
     }
 }

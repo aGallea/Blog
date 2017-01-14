@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { PageHeaderService } from '../page-header/page-header.service';
 import { PageHeader } from '../page-header/page-header.model';
@@ -9,13 +9,9 @@ import { PageHeader } from '../page-header/page-header.model';
   templateUrl: 'master-page.component.html',
   providers: [PageHeaderService]
 })
-export class MasterPageComponent  implements OnInit  { 
+export class MasterPageComponent { 
   header:PageHeader;
   constructor(private pageHeaderService: PageHeaderService) {
     this.pageHeaderService.headerTitle$.subscribe(header => { this.header=header; });
-  }
-
-  ngOnInit(): void{
-      
   }
 }

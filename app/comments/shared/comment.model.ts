@@ -4,6 +4,7 @@ export class Comment{
     public owner:string;
     public dateSubmitted:string;
     public content: string;
+    public parentId:number;
     public comments: Comment[];
 
     constructor(owner:string,content: string){

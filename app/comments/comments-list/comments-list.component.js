@@ -13,14 +13,31 @@ var comment_service_1 = require('../shared/comment.service');
 var post_model_1 = require('../../posts/shared/post.model');
 var CommentsListComponent = (function () {
     function CommentsListComponent(commentService) {
+        var _this = this;
         this.commentService = commentService;
+        this.commentService.commentSubject$.subscribe(function (comment) { _this.commentAdded(comment); });
     }
-    CommentsListComponent.prototype.ngOnInit = function () {
-    };
     CommentsListComponent.prototype.loadComments = function (postId) {
         var _this = this;
         this.commentService.getComments(postId)
             .subscribe(function (comments) { return _this.comments = comments; }, function (error) { return _this.errorMessage = error; });
+    };
+    CommentsListComponent.prototype.commentAdded = function (comment) {
+        if (!this.comments) {
+            return;
+        }
+        var currentComment = this.getComment(comment.postId);
+        if (currentComment == null)
+            return;
+        this.comments.push(comment);
+    };
+    CommentsListComponent.prototype.getComment = function (postId) {
+        for (var _i = 0, _a = this.comments; _i < _a.length; _i++) {
+            var comment = _a[_i];
+            if (comment.postId === postId)
+                return comment;
+        }
+        return null;
     };
     __decorate([
         core_1.Input(), 

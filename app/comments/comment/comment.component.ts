@@ -27,6 +27,7 @@ export class CommentComponent implements OnInit {
   onSubmit(): void {
     if (this.model.owner === "" || this.model.content==="") { return; }
     this.model.postId = this.postId;
+    this.model.parentId = 0;
     this.commentService.addComment(this.model)
                      .subscribe(
                        comment  => this.addCommentSucceeded(comment),
@@ -34,6 +35,7 @@ export class CommentComponent implements OnInit {
   }
 
   addCommentSucceeded(comment:Comment): void{
+    this.commentService.commentAdded(comment);
     this.model.owner="";
     this.model.content="";
   }

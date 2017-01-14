@@ -16,8 +16,6 @@ var MasterPageComponent = (function () {
         this.pageHeaderService = pageHeaderService;
         this.pageHeaderService.headerTitle$.subscribe(function (header) { _this.header = header; });
     }
-    MasterPageComponent.prototype.ngOnInit = function () {
-    };
     MasterPageComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

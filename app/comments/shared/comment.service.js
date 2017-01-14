@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Rx_1 = require('rxjs/Rx');
+var Subject_1 = require('rxjs/Subject');
 var CommentService = (function () {
     function CommentService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.options = new http_1.RequestOptions({ headers: this.headers });
         this.commentsUrl = 'api/comments';
+        this.commentSubjectSource = new Subject_1.Subject();
+        this.commentSubject$ = this.commentSubjectSource.asObservable();
     }
     CommentService.prototype.getComments = function (postId) {
         return this.http.get(this.commentsUrl + "/?postId=" + postId)
@@ -45,6 +48,9 @@ var CommentService = (function () {
         }
         console.error(errMsg);
         return Rx_1.Observable.throw(errMsg);
+    };
+    CommentService.prototype.commentAdded = function (comment) {
+        this.commentSubjectSource.next(comment);
     };
     CommentService = __decorate([
         core_1.Injectable(), 
