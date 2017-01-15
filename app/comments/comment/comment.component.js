@@ -15,6 +15,8 @@ var CommentComponent = (function () {
     function CommentComponent(commentService) {
         this.commentService = commentService;
         this.model = new comment_model_1.Comment("", "");
+        this.show = false;
+        this.showHeader = true;
         this.model.comments = [];
     }
     CommentComponent.prototype.ngOnInit = function () {
@@ -34,15 +36,37 @@ var CommentComponent = (function () {
         this.model.owner = "";
         this.model.content = "";
     };
+    CommentComponent.prototype.toggle = function () {
+        this.show = !this.show;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
     ], CommentComponent.prototype, "postId", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], CommentComponent.prototype, "show", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], CommentComponent.prototype, "showHeader", void 0);
     CommentComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'form-comment',
             templateUrl: 'comment.component.html',
+            animations: [
+                core_1.trigger('myAnimation', [
+                    core_1.transition(':enter', [
+                        core_1.style({ transform: 'translateX(100%)', opacity: 0 }),
+                        core_1.animate('500ms', core_1.style({ transform: 'translateX(0)', opacity: 1 }))
+                    ]),
+                    core_1.transition(':leave', [
+                        core_1.style({ transform: 'translateX(0)', 'opacity': 1 }),
+                        core_1.animate('500ms', core_1.style({ transform: 'translateX(100%)', opacity: 0 }))
+                    ])])
+            ],
             styleUrls: ['comment.component.css']
         }), 
         __metadata('design:paramtypes', [comment_service_1.CommentService])

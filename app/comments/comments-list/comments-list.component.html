@@ -12,7 +12,10 @@
 					<p class="name">{{comment.owner}}</p>
 					<p class="date">{{comment.dateSubmitted}}</p>
 					<p>{{comment.content}}</p>				
-					<a><i class="fa fa-share" ></i>הגב</a>
+					<a (click)="commentForm.toggle()"><i class="fa fa-share"></i>הגב</a>
+					<div class="row">
+					<form-comment [postId]="comment.postId" [showHeader]="false" #commentForm></form-comment>
+					</div>
 				</div>
 				<div *ngFor="let subComment of comment.comments" class="comment comment-child">
     				<div class="comment-avatar">

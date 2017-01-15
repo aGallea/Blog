@@ -1,5 +1,5 @@
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 rtlDir comment-form">
-    <div class="row">
+<div *ngIf="show" [@myAnimation]="show" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 rtlDir comment-form">
+    <div *ngIf="showHeader" class="row">
         <h2 class="comment-form-header">השאר תגובה</h2>
     </div>
     <div class="row">

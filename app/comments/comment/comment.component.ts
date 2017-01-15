@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, trigger, transition, style, animate, state } from '@angular/core';
 
 import { Comment }        from '../shared/comment.model';
 import { CommentService }        from '../shared/comment.service';
@@ -7,6 +7,24 @@ import { CommentService }        from '../shared/comment.service';
   moduleId: module.id,
   selector: 'form-comment',
   templateUrl: 'comment.component.html',
+  animations: [
+    trigger(
+      'myAnimation',
+      [
+        transition(
+        ':enter', [
+          style({transform: 'translateX(100%)', opacity: 0}),
+          animate('500ms', style({transform: 'translateX(0)',opacity: 1}))
+        ]
+      ),
+      transition(
+        ':leave', [
+          style({transform: 'translateX(0)', 'opacity': 1}),
+          animate('500ms', style({transform: 'translateX(100%)',opacity: 0}))
+        ]
+      )]
+    )
+  ],
   styleUrls: [ 'comment.component.css' ]
 })
 
@@ -15,6 +33,8 @@ export class CommentComponent implements OnInit {
   
   errorMessage :string;
   @Input() postId: number;
+  @Input() show:boolean=false;
+  @Input() showHeader:boolean=true;
 
   constructor(private commentService: CommentService) { 
     this.model.comments=[];
@@ -38,5 +58,9 @@ export class CommentComponent implements OnInit {
     this.commentService.commentAdded(comment);
     this.model.owner="";
     this.model.content="";
+  }
+
+  toggle(): void{
+    this.show=!this.show;
   }
 }

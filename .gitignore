@@ -3,6 +3,8 @@ node_modules
 brace-expansion
 out
 
+*.log
+
 app/*.js
 app/*.js.map
 
