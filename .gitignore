@@ -2,6 +2,7 @@ node_modules
 .vscode
 brace-expansion
 out
+aot
 
 *.log
 
