@@ -33,6 +33,7 @@ export class CommentComponent implements OnInit {
   
   errorMessage :string;
   @Input() postId: number;
+  @Input() parentId: number = 0;
   @Input() show:boolean=false;
   @Input() showHeader:boolean=true;
 
@@ -47,7 +48,7 @@ export class CommentComponent implements OnInit {
   onSubmit(): void {
     if (this.model.owner === "" || this.model.content==="") { return; }
     this.model.postId = this.postId;
-    this.model.parentId = 0;
+    this.model.parentId = this.parentId;
     this.commentService.addComment(this.model)
                      .subscribe(
                        comment  => this.addCommentSucceeded(comment),
