@@ -30,15 +30,21 @@ export class CommentsListComponent {
     if (!this.comments){
       return;
     }
-    let currentComment = this.getComment(comment.postId);
+    let currentComment = this.getComment(comment.postId, comment.parentId);
     if (currentComment == null) return;
     this.comments.push(comment);
   }
 
-  private getComment(postId:number): Comment{
+  private getComment(postId:number, parentId:numer): Comment{
     for(let comment of this.comments){
-      if(comment.postId === postId)
-        return comment;
+      if (parentId == 0){
+        if(comment.postId === postId)
+          return comment;
+      }
+      else{
+        if(comment.postId === postId && comment.id === parentId)
+          return comment;
+      }
     }
     return null;
   }
