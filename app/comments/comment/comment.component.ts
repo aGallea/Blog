@@ -59,6 +59,9 @@ export class CommentComponent implements OnInit {
     this.commentService.commentAdded(comment);
     this.model.owner="";
     this.model.content="";
+    if (!showHeader) {
+      this.show=false;
+    }
   }
 
   toggle(): void{
